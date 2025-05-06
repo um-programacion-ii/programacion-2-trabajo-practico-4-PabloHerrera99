@@ -18,7 +18,7 @@ body:
     attributes:
       value: |
         ## Descripción
-        Describe brevemente el propósito de este issue.
+        <!-- Escribe aquí una breve descripción del propósito de este issue -->
         
         ## Requisitos Técnicos
         - [ ] Requisito 1
@@ -54,3 +54,9 @@ body:
         - Milestone: Nombre del Milestone
         - Project: Sistema de Gestión de Biblioteca
         - Estado: To Do
+        
+  - type: input
+    attributes:
+      label: "Descripción del Issue"
+      description: "Escribe una breve descripción del propósito de este issue."
+      placeholder: "Añadir descripción aquí"
