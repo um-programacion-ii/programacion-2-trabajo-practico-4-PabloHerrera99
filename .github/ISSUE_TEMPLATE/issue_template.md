@@ -1,12 +1,3 @@
----
-name: Nuevo Issue
-title: "Título del issue aquí"
-labels:
-  - enhancement
-assignees:
-  - tu-usuario-github
----
-
 ## Descripción
 Describe brevemente el propósito de este issue.
 
