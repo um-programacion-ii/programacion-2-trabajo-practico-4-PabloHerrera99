@@ -10,7 +10,7 @@ public interface PrestamoService {
     Prestamo save(Prestamo prestamo);
     Prestamo findById(Long id);
     List<Prestamo> findAll();
-    Void delete(Long id);
-    List<Prestamo> findByUsuario(Usuario usuario);
-    List<Prestamo> findByLibro(Libro libro);
+    void delete(Long id);
+    List<Prestamo> findByUsuario(Long usuarioid);
+    List<Prestamo> findByLibro(Long libroid);
 }
