@@ -36,4 +36,9 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     public void deleteById(Long id) {
         usuarios.remove(id);
     }
+
+    @Override
+    public boolean existsById(Long id) {
+        return usuarios.containsKey(id);
+    }
 }
