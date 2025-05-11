@@ -25,6 +25,11 @@ public class LibroServiceImpl implements LibroService {
         return libroRepository.findByIsbn(isbn)
                 .orElseThrow(() -> new LibroNoEncontradoException(isbn));
     }
+    @Override
+    public Libro findById(Long id) {
+        return libroRepository.findById(id)
+                .orElseThrow(() -> new LibroNoEncontradoException(id));
+    }
 
     @Override
     public List<Libro> findAll() {
