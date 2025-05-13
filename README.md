@@ -55,9 +55,9 @@
 ### 4. Configuración de Milestones
 1. Ir a la pestaña "Milestones"
 2. Crear los siguientes milestones:
-   - Etapa 1: Configuración y Modelos
-   - Etapa 2: Repositories y Services
-   - Etapa 3: Controllers
+   - Etapa 1: Configuración y modelos
+   - Etapa 2: repositories y services
+   - Etapa 3: controllers
    - Etapa 4: Testing y Documentación
 
 ### 5. Configuración de Labels
@@ -112,8 +112,8 @@ Desarrollar un sistema de gestión de biblioteca utilizando Spring Framework, im
 
 ### Desglose estimado por etapa:
 - Configuración inicial y modelos: 6-7 horas
-- Repositories y Services: 7-9 horas
-- Controllers y Endpoints: 6-7 horas
+- repositories y services: 7-9 horas
+- controllers y Endpoints: 6-7 horas
 - Testing y documentación: 5-7 horas
 
 > 💡 **Nota**: Esta estimación considera la experiencia adquirida en trabajos anteriores y la complejidad de implementar una arquitectura en capas con Spring Framework. El tiempo se ha ajustado considerando que no se requiere implementación de persistencia real.
@@ -144,7 +144,7 @@ Desarrollar un sistema de gestión de biblioteca utilizando Spring Framework, im
 
 ## 📘 Etapas del Trabajo
 
-### Etapa 1: Configuración del Proyecto y Modelos Base
+### Etapa 1: Configuración del Proyecto y modelos Base
 
 #### Objetivos
 - Configurar un proyecto Spring Boot
@@ -179,7 +179,7 @@ public enum EstadoLibro {
 }
 ```
 
-### Etapa 2: Implementación de Repositories y Services
+### Etapa 2: Implementación de repositories y services
 
 #### Objetivos
 - Implementar la capa de servicios usando interfaces
@@ -308,7 +308,7 @@ public class LibroServiceImpl implements LibroService {
 }
 ```
 
-### Etapa 3: Implementación de Controllers
+### Etapa 3: Implementación de controllers
 
 #### Objetivos
 - Implementar la capa de controladores REST
@@ -437,9 +437,9 @@ class LibroServiceImplTest {
    - `Done`
 
 3. **Milestones**
-   - Etapa 1: Configuración y Modelos
-   - Etapa 2: Repositories y Services
-   - Etapa 3: Controllers
+   - Etapa 1: Configuración y modelos
+   - Etapa 2: repositories y services
+   - Etapa 3: controllers
    - Etapa 4: Testing y Documentación
 
 4. **Issues y Pull Requests**
