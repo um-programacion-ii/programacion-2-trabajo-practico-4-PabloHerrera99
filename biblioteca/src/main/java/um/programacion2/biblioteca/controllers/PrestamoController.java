@@ -1,5 +1,6 @@
 package um.programacion2.biblioteca.controllers;
 
+import org.springframework.http.HttpStatus;
 import um.programacion2.biblioteca.modelos.Prestamo;
 
 import um.programacion2.biblioteca.services.PrestamoService;
@@ -27,11 +28,13 @@ public class PrestamoController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Prestamo registrar(@RequestBody Prestamo prestamo) {
         return prestamoService.save(prestamo);
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void eliminar(@PathVariable Long id) {
         prestamoService.delete(id);
     }
