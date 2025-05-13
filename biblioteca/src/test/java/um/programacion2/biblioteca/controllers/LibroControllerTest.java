@@ -1,6 +1,5 @@
 package um.programacion2.biblioteca.controllers;
 
-import um.programacion2.biblioteca.controllers.LibroController;
 import um.programacion2.biblioteca.enums.EstadoLibro;
 import um.programacion2.biblioteca.exceptions.LibroNoEncontradoException;
 import um.programacion2.biblioteca.modelos.Libro;
@@ -36,7 +35,7 @@ public class LibroControllerTest {
     private LibroService libroService;
 
     @Test
-    void obtenerTodos_retornaListaY200() throws Exception {
+    void obtenerTodos_retornaLista_retorna200() throws Exception {
         List<Libro> libros = List.of(
                 new Libro(1L, "111", "Libro 1", "Autor 1", EstadoLibro.DISPONIBLE),
                 new Libro(2L, "222", "Libro 2", "Autor 2", EstadoLibro.PRESTADO)
@@ -51,7 +50,7 @@ public class LibroControllerTest {
     }
 
     @Test
-    void obtenerPorId_existente_retornaLibroY200() throws Exception {
+    void obtenerPorId_existente_retornaLibro_retorna200() throws Exception {
         Long id = 1L;
         Libro libro = new Libro(id, "111", "Libro 1", "Autor 1", EstadoLibro.DISPONIBLE);
         when(libroService.findById(id)).thenReturn(libro);
@@ -71,7 +70,7 @@ public class LibroControllerTest {
     }
 
     @Test
-    void crearLibro_valido_retornaLibroY201() throws Exception {
+    void crearLibro_valido_retornaLibro_retorna201() throws Exception {
         Libro nuevo = new Libro(null, "333", "Nuevo Libro", "Nuevo Autor", EstadoLibro.DISPONIBLE);
         Libro guardado = new Libro(1L, "333", "Nuevo Libro", "Nuevo Autor", EstadoLibro.DISPONIBLE);
         when(libroService.save(any())).thenReturn(guardado);
@@ -84,7 +83,7 @@ public class LibroControllerTest {
     }
 
     @Test
-    void actualizarLibro_existente_retornaActualizadoY200() throws Exception {
+    void actualizarLibro_existente_retornaActualizado_retorna200() throws Exception {
         Long id = 1L;
         Libro actualizado = new Libro(id, "444", "Libro Modificado", "Autor Modificado", EstadoLibro.DISPONIBLE);
         when(libroService.update(eq(id), any())).thenReturn(actualizado);

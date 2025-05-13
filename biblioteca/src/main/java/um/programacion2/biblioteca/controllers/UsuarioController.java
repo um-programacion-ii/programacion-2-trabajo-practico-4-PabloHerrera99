@@ -1,5 +1,6 @@
 package um.programacion2.biblioteca.controllers;
 
+import org.springframework.http.HttpStatus;
 import um.programacion2.biblioteca.modelos.Usuario;
 import um.programacion2.biblioteca.services.UsuarioService;
 
@@ -27,6 +28,7 @@ public class UsuarioController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Usuario crear(@RequestBody Usuario usuario) {
         return usuarioService.save(usuario);
     }
@@ -37,6 +39,7 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void eliminar(@PathVariable Long id) {
         usuarioService.delete(id);
     }
