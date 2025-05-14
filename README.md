@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/Vg2EF-QZ)
 # 🚀 Trabajo Práctico: Sistema de Gestión de Biblioteca con Spring Framework
 
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.4.5-green)
@@ -54,9 +55,9 @@
 ### 4. Configuración de Milestones
 1. Ir a la pestaña "Milestones"
 2. Crear los siguientes milestones:
-   - Etapa 1: Configuración y Modelos
-   - Etapa 2: Repositories y Services
-   - Etapa 3: Controllers
+   - Etapa 1: Configuración y modelos
+   - Etapa 2: repositories y services
+   - Etapa 3: controllers
    - Etapa 4: Testing y Documentación
 
 ### 5. Configuración de Labels
@@ -111,15 +112,15 @@ Desarrollar un sistema de gestión de biblioteca utilizando Spring Framework, im
 
 ### Desglose estimado por etapa:
 - Configuración inicial y modelos: 6-7 horas
-- Repositories y Services: 7-9 horas
-- Controllers y Endpoints: 6-7 horas
+- repositories y services: 7-9 horas
+- controllers y Endpoints: 6-7 horas
 - Testing y documentación: 5-7 horas
 
 > 💡 **Nota**: Esta estimación considera la experiencia adquirida en trabajos anteriores y la complejidad de implementar una arquitectura en capas con Spring Framework. El tiempo se ha ajustado considerando que no se requiere implementación de persistencia real.
 
 ## 👨‍🎓 Información del Alumno
-- **Nombre y Apellido**: [Nombre y Apellido del Alumno]
-- **Legajo**: [Número de Legajo]
+- **Nombre y Apellido**: Pablo Herrera
+- **Legajo**: 60082
 
 ## 📋 Requisitos Previos
 
@@ -141,9 +142,182 @@ Desarrollar un sistema de gestión de biblioteca utilizando Spring Framework, im
 - Mockito 5.8.0
 - Git y GitHub
 
+## Clonar y Ejecutar el Proyecto
+
+```bash
+   git clone https://github.com/um-programacion-ii/programacion-2-trabajo-practico-4-PabloHerrera99.git
+   cd programacion-2-trabajo-practico-4-PabloHerrera99.git
+```
+
+### Ejecutar el Proyecto
+```bash
+  mvn clean install
+  mvn spring-boot:run
+```
+### Ejecutar Tests
+```bash 
+  mvn test
+```
+## Arquitectura del Sistema
+
+El sistema sigue el patrón **MVC (Modelo-Vista-Controlador)**, y está diseñado aplicando los **principios SOLID** para asegurar una arquitectura robusta, mantenible y extensible.
+
+- **Modelo**: representa las entidades del dominio.
+- **Controlador**: maneja las solicitudes HTTP entrantes.
+- **Servicio**: contiene la lógica de negocio.
+- **Repositorio**: se encarga del acceso a los datos (en memoria en esta etapa).
+
+### Principios SOLID aplicados
+
+- **Responsabilidad Única**: cada clase tiene una única función.
+- **Abierto/Cerrado**: las clases están abiertas a extensión pero cerradas a modificación.
+- **Sustitución de Liskov**: se pueden sustituir objetos de una clase base por objetos de clases derivadas.
+- **Segregación de Interfaces**: se utilizan interfaces específicas para cada caso.
+- **Inversión de Dependencias**: las clases dependen de interfaces y no de implementaciones concretas.
+
+---
+
+## Estructura de Componentes
+
+| Tipo de Componente | Componentes                                                                 | Responsabilidad                                              |
+|--------------------|------------------------------------------------------------------------------|--------------------------------------------------------------|
+| **Modelos**         | `Libro`, `Usuario`, `Prestamo`                                               | Entidades del dominio que representan objetos del negocio   |
+| **Enums**          | `EstadoLibro`, `EstadoUsuario`                                               | Definiciones de estado para las entidades                   |
+| **Repositorios**   | `LibroRepository`, `UsuarioRepository`, `PrestamoRepository`                 | Interfaces de acceso a datos con implementaciones en memoria |
+| **Servicios**      | `LibroService`, `UsuarioService`, `PrestamoService`                          | Implementación de la lógica de negocio                      |
+| **Controladores**  | `LibroController`, `UsuarioController`, `PrestamoController`                 | Endpoints RESTful de la API                                 |
+
+---
+
+## Endpoints REST
+
+### LibroController
+
+Gestiona los libros a través del endpoint `/api/libros`.
+
+| Método HTTP | Endpoint        | Método del Controlador     | Método del Servicio        | Descripción                    |
+|-------------|------------------|-----------------------------|-----------------------------|--------------------------------|
+| GET         | `/`              | `obtenerTodos()`           | `findAll()`                 | Obtener todos los libros       |
+| GET         | `/{id}`          | `obtenerPorId(id)`         | `findById(id)`              | Obtener un libro por ID        |
+| POST        | `/`              | `crear(libro)`             | `save(libro)`               | Crear un nuevo libro           |
+| PUT         | `/{id}`          | `actualizar(id, libro)`    | `update(id, libro)`         | Actualizar un libro existente  |
+| DELETE      | `/{id}`          | `eliminar(id)`             | `delete(id)`                | Eliminar un libro              |
+
+---
+
+### UsuarioController
+
+Gestiona los usuarios a través del endpoint `/api/usuarios`.
+
+| Método HTTP | Endpoint        | Método del Controlador     | Método del Servicio        | Descripción                    |
+|-------------|------------------|-----------------------------|-----------------------------|--------------------------------|
+| GET         | `/`              | `obtenerTodos()`           | `findAll()`                 | Obtener todos los usuarios     |
+| GET         | `/{id}`          | `obtenerPorId(id)`         | `findById(id)`              | Obtener un usuario por ID      |
+| POST        | `/`              | `crear(usuario)`           | `save(usuario)`             | Crear un nuevo usuario         |
+| PUT         | `/{id}`          | `actualizar(id, usuario)`  | `update(id, usuario)`       | Actualizar un usuario existente|
+| DELETE      | `/{id}`          | `eliminar(id)`             | `delete(id)`                | Eliminar un usuario            |
+
+---
+
+### PrestamoController
+
+Gestiona los préstamos de libros a través del endpoint `/api/prestamos`.
+
+| Método HTTP | Endpoint                           | Método del Controlador             | Método del Servicio              | Descripción                       |
+|-------------|-------------------------------------|------------------------------------|----------------------------------|-----------------------------------|
+| GET         | `/`                                 | `obtenerTodos()`                  | `findAll()`                      | Obtener todos los préstamos       |
+| GET         | `/{id}`                             | `obtenerPorId(id)`                | `findById(id)`                   | Obtener un préstamo por ID        |
+| POST        | `/`                                 | `registrar(prestamo)`             | `save(prestamo)`                 | Registrar un nuevo préstamo       |
+| DELETE      | `/{id}`                             | `eliminar(id)`                    | `delete(id)`                     | Eliminar un préstamo              |
+| GET         | `/usuario/{usuarioId}`              | `obtenerPorUsuario(usuarioId)`    | `findByUsuario(usuarioId)`       | Obtener préstamos por usuario     |
+| GET         | `/libro/{libroId}`                  | `obtenerPorLibro(libroId)`        | `findByLibro(libroId)`           | Obtener préstamos por libro       |
+
+---
+# Ejemplos de Uso
+
+## Libro
+
+#### Crear un nuevo libro
+```bash
+
+curl -X POST http://localhost:8080/api/libros \
+-H "Content-Type: application/json" \
+-d '{
+  "isbn": "123-456-789",
+  "titulo": "El problema de los tres cuerpos",
+  "autor": "Cixin Liu",
+  "estado": "DISPONIBLE"
+}'
+```
+#### Obtener todos los libros
+```bash
+
+curl -X GET http://localhost:8080/api/libros
+```
+#### Obtener un libro por ID
+```bash
+
+curl -X GET http://localhost:8080/api/libros/1
+```
+#### Actualizar un libro
+```bash
+
+curl -X PUT http://localhost:8080/api/libros/1 \
+-H "Content-Type: application/json" \
+-d '{
+"isbn": "123-456-789",
+"titulo": "El problema de los tres cuerpos",
+"autor": "Cixin Liu",
+"estado": "PRESTADO"
+}'
+```
+#### Eliminar un libro
+```bash
+
+curl -X DELETE http://localhost:8080/api/libros/1
+```
+## Usuario
+
+#### Crear un nuevo usuario
+```bash
+
+curl -X POST http://localhost:8080/api/usuarios \
+-H "Content-Type: application/json" \
+-d '{
+"nombre": "Juan Pérez",
+"email": "juan@example.com",
+"estado": "ACTIVO"
+}'
+```
+#### Obtener todos los usuarios
+```bash
+
+curl -X GET http://localhost:8080/api/usuarios
+```
+#### Obtener un usuario por ID
+```bash
+
+curl -X GET http://localhost:8080/api/usuarios/1
+```
+#### Actualizar un usuario
+```bash
+
+curl -X PUT http://localhost:8080/api/usuarios/1 \
+-H "Content-Type: application/json" \
+-d '{
+"nombre": "Juan Pérez",
+"correo": "juan.perez@example.com",
+"estado": "INACTIVO"
+}'
+```
+#### Eliminar un usuario
+```bash
+
+curl -X DELETE http://localhost:8080/api/usuarios/1
+```
 ## 📘 Etapas del Trabajo
 
-### Etapa 1: Configuración del Proyecto y Modelos Base
+### Etapa 1: Configuración del Proyecto y modelos Base
 
 #### Objetivos
 - Configurar un proyecto Spring Boot
@@ -178,7 +352,7 @@ public enum EstadoLibro {
 }
 ```
 
-### Etapa 2: Implementación de Repositories y Services
+### Etapa 2: Implementación de repositories y services
 
 #### Objetivos
 - Implementar la capa de servicios usando interfaces
@@ -307,7 +481,7 @@ public class LibroServiceImpl implements LibroService {
 }
 ```
 
-### Etapa 3: Implementación de Controllers
+### Etapa 3: Implementación de controllers
 
 #### Objetivos
 - Implementar la capa de controladores REST
@@ -436,9 +610,9 @@ class LibroServiceImplTest {
    - `Done`
 
 3. **Milestones**
-   - Etapa 1: Configuración y Modelos
-   - Etapa 2: Repositories y Services
-   - Etapa 3: Controllers
+   - Etapa 1: Configuración y modelos
+   - Etapa 2: repositories y services
+   - Etapa 3: controllers
    - Etapa 4: Testing y Documentación
 
 4. **Issues y Pull Requests**

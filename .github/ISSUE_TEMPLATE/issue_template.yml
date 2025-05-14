@@ -1,46 +1,62 @@
----
-name: Issue Template
-about: Template para crear nuevos issues
-title: ''
-labels: ''
-assignees: ''
-
----
-
-## Descripción
-[Describe brevemente el propósito de este issue]
-
-## Requisitos Técnicos
-- [ ] Requisito 1
-- [ ] Requisito 2
-- [ ] Requisito 3
-
-## Criterios de Aceptación
-- [ ] Criterio 1
-- [ ] Criterio 2
-- [ ] Criterio 3
-
-## Dependencias
-- [ ] Dependencia 1
-- [ ] Dependencia 2
-
-## Complejidad
-- [ ] Baja
-- [ ] Media
-- [ ] Alta
-
-## Labels
-- [ ] `enhancement`
-- [ ] `bug`
-- [ ] `documentation`
-- [ ] `testing`
-- [ ] `model`
-- [ ] `repository`
-- [ ] `service`
-- [ ] `controller`
-- [ ] `database`
-
-## Asignación
-- Milestone: [Nombre del Milestone]
-- Project: Sistema de Gestión de Biblioteca
-- Estado: To Do 
+name: Nuevo Issue
+description: Template para crear nuevos issues
+title: "Título del issue aquí"
+labels:
+  - enhancement
+  - bug
+  - documentation
+  - testing
+  - model
+  - repository
+  - service
+  - controller
+  - database
+assignees:
+  - tu-usuario-github
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Descripción
+        <!-- Escribe aquí una breve descripción del propósito de este issue -->
+        
+        ## Requisitos Técnicos
+        - [ ] Requisito 1
+        - [ ] Requisito 2
+        - [ ] Requisito 3
+        
+        ## Criterios de Aceptación
+        - [ ] Criterio 1
+        - [ ] Criterio 2
+        - [ ] Criterio 3
+        
+        ## Dependencias
+        - [ ] Dependencia 1
+        - [ ] Dependencia 2
+        
+        ## Complejidad
+        - [ ] Baja
+        - [ ] Media
+        - [ ] Alta
+        
+        ## Labels sugeridas
+        - [ ] enhancement
+        - [ ] bug
+        - [ ] documentation
+        - [ ] testing
+        - [ ] model
+        - [ ] repository
+        - [ ] service
+        - [ ] controller
+        - [ ] database
+        
+        ## Asignación
+        - Milestone: Nombre del Milestone
+        - Project: Sistema de Gestión de Biblioteca
+        - Estado: To Do
+        
+  - type: input
+    attributes:
+      label: "Descripción del Issue"
+      description: "Escribe una breve descripción del propósito de este issue."
+      placeholder: "Añadir descripción aquí"
